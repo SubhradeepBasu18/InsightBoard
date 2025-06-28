@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 import { Bell, Settings, Menu, X } from "lucide-react"
 import { Link } from 'react-router-dom'
 
-export default function Header({startShow}) {
+export default function Header({ startShow, isLoggedIn }) {
     const [isMenuOpen, setIsMenuOpen] = React.useState(false)
 
     return (
@@ -15,42 +15,42 @@ export default function Header({startShow}) {
                 <div className="flex items-center justify-between h-16 lg:h-18">
                     {/* Logo Section */}
                     <Link to="/">
-                    <motion.div
-                        initial={{ opacity: 0, x: -30 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
-                        className="flex items-center gap-3"
-                    >
                         <motion.div
-                            whileHover={{
-                                rotate: 15,
-                                scale: 1.1,
-                                filter: "drop-shadow(0 0 8px rgba(59, 130, 246, 0.5))",
-                            }}
-                            className="relative"
+                            initial={{ opacity: 0, x: -30 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.6, type: "spring", stiffness: 100 }}
+                            className="flex items-center gap-3"
                         >
-                            <div className="size-8 sm:size-9 text-blue-400 relative z-10">
-                                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z"
-                                        fill="currentColor"
-                                    />
-                                </svg>
-                            </div>
-                            {/* Glow effect */}
-                            <div className="absolute inset-0 size-8 sm:size-9 bg-blue-400/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                        </motion.div>
-
-                        <div className="flex flex-col">
-                            <motion.h1
-                                whileHover={{ scale: 1.02 }}
-                                className="text-xl sm:text-2xl font-bold tracking-tight bg-gradient-to-r from-white via-blue-100 to-blue-200 bg-clip-text text-transparent"
+                            <motion.div
+                                whileHover={{
+                                    rotate: 15,
+                                    scale: 1.1,
+                                    filter: "drop-shadow(0 0 8px rgba(59, 130, 246, 0.5))",
+                                }}
+                                className="relative"
                             >
-                                InsightBoard
-                            </motion.h1>
-                            <div className="h-[1px] w-0 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-500" />
-                        </div>
-                    </motion.div>
+                                <div className="size-8 sm:size-9 text-blue-400 relative z-10">
+                                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M24 4C25.7818 14.2173 33.7827 22.2182 44 24C33.7827 25.7818 25.7818 33.7827 24 44C22.2182 33.7827 14.2173 25.7818 4 24C14.2173 22.2182 22.2182 14.2173 24 4Z"
+                                            fill="currentColor"
+                                        />
+                                    </svg>
+                                </div>
+                                {/* Glow effect */}
+                                <div className="absolute inset-0 size-8 sm:size-9 bg-blue-400/20 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            </motion.div>
+
+                            <div className="flex flex-col">
+                                <motion.h1
+                                    whileHover={{ scale: 1.02 }}
+                                    className="text-xl sm:text-2xl font-bold tracking-tight bg-gradient-to-r from-white via-blue-100 to-blue-200 bg-clip-text text-transparent"
+                                >
+                                    InsightBoard
+                                </motion.h1>
+                                <div className="h-[1px] w-0 bg-gradient-to-r from-blue-400 to-purple-400 group-hover:w-full transition-all duration-500" />
+                            </div>
+                        </motion.div>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -113,29 +113,56 @@ export default function Header({startShow}) {
                             {
                                 startShow && (
                                     <motion.button
-                                whileHover={{
-                                    scale: 1.05,
-                                    boxShadow: "0 8px 25px rgba(59, 130, 246, 0.3)",
-                                }}
-                                whileTap={{ scale: 0.95 }}
-                                className="hidden sm:flex items-center justify-center h-10 px-6 rounded-xl bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-500 hover:via-blue-600 hover:to-blue-700 text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-500/20 hover:border-blue-400/30"
-                            >
-                                Get Started
-                                <motion.span
-                                    className="ml-2 text-blue-200"
-                                    animate={{ x: [0, 3, 0] }}
-                                    transition={{
-                                        repeat: Number.POSITIVE_INFINITY,
-                                        duration: 2,
-                                        ease: "easeInOut",
-                                    }}
-                                >
-                                    →
-                                </motion.span>
-                            </motion.button>
+                                        whileHover={{
+                                            scale: 1.05,
+                                            boxShadow: "0 8px 25px rgba(59, 130, 246, 0.3)",
+                                        }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="hidden sm:flex items-center justify-center h-10 px-6 rounded-xl bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-500 hover:via-blue-600 hover:to-blue-700 text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-500/20 hover:border-blue-400/30"
+                                    >
+                                        Get Started
+                                        <motion.span
+                                            className="ml-2 text-blue-200"
+                                            animate={{ x: [0, 3, 0] }}
+                                            transition={{
+                                                repeat: Number.POSITIVE_INFINITY,
+                                                duration: 2,
+                                                ease: "easeInOut",
+                                            }}
+                                        >
+                                            →
+                                        </motion.span>
+                                    </motion.button>
                                 )
                             }
                         </Link>
+
+                        {
+                            isLoggedIn ? (
+                                <motion.button
+                                    whileHover={{
+                                        scale: 1.05,
+                                        boxShadow: "0 8px 25px rgba(59, 130, 246, 0.3)",
+                                    }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="hidden sm:flex items-center justify-center h-10 px-6 rounded-xl bg-gradient-to-r from-red-600 via-red-700 to-red-800 
+                                    hover:from-red-500 hover:via-red-600 hover:to-red-700 border-red-500/20 hover:border-red-400/30 text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border">
+                                    Logout
+
+                                </motion.button>
+                            ) : (
+                                <motion.button
+                                    whileHover={{
+                                        scale: 1.05,
+                                        boxShadow: "0 8px 25px rgba(59, 130, 246, 0.3)",
+                                    }}
+                                    whileTap={{ scale: 0.95 }}
+                                    className="hidden sm:flex items-center justify-center h-10 px-6 rounded-xl bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-500 hover:via-blue-600 hover:to-blue-700 text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-500/20 hover:border-blue-400/30">
+                                    Login
+
+                                </motion.button>
+                            )
+                        }
 
                         {/* User Avatar */}
                         <motion.div

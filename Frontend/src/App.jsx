@@ -16,7 +16,10 @@ function App() {
                     <div className="min-h-screen flex flex-col bg-zinc-950 font-['Inter','Noto Sans',sans-serif]">
                         <div className="flex flex-col grow h-full w-full">
                             {/* Header section */}
-                            <Header startShow={true}/>
+                            <Header
+                            startShow={true}
+                            isLoggedIn={true}
+                            />
                             <main className="flex-1 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-40 py-6 sm:py-8 md:py-10 flex justify-center">
                                 <div className="w-full max-w-[1400px] flex flex-1 flex-col">
                                     {/* Hero features */}

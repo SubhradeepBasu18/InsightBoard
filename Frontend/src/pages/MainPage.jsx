@@ -8,18 +8,30 @@ import { motion } from "motion/react"
 
 function MainPage() {
     return (
-        <div className='w-full min-h-screen bg-zinc-900 flex flex-col'>
+        <div className='w-full min-h-screen bg-zinc-950 flex flex-col'>
             <Header
                 startShow={false}
             />
 
             <motion.div initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, type: "spring", stiffness: 100 }} className='flex flex-col items-center pt-16 mt-20 pb-20'>
-                <h1 className='text-white text-5xl font-semibold leading-tight '>Unlock Insights from Your Text Instantly</h1>
-                <p className='text-zinc-400 mt-5 tracking-wide'>Paste your text or upload a file to automatically generate summaries, extract key topics, and identify actionable insights.</p>
+                transition={{ duration: 0.5, type: "spring", stiffness: 50 }} className='flex flex-col items-center pt-16 mt-20 pb-20'>
+                <motion.h1 
+                initial={{opacity: 0, x: -50}}
+                transition={{delay: 0.2, duration: 0.6, type: "spring", stiffness: 30}}
+                animate={{opacity: 1, x: 0}}
+                className='text-white text-5xl font-semibold leading-tight '>Unlock Insights from Your Text Instantly</motion.h1>
+                <motion.p 
+                initial={{opacity: 0, x: -50}}
+                transition={{delay: 0.1, duration: 0.6, type: "spring", stiffness: 30}}
+                animate={{opacity: 1, x: 0}}
+                className='text-zinc-400 mt-5 tracking-wide'>Paste your text or upload a file to automatically generate summaries, extract key topics, and identify actionable insights.</motion.p>
 
-                <div className='w-[50rem] h-[30rem] bg-[#1F2937] mt-14 rounded-3xl overflow-hidden px-6 py-4'>
+                <motion.div 
+                initial={{opacity: 0, x: -50}}
+                transition={{delay: 0.2, duration: 0.6, type: "spring", stiffness: 30}}
+                animate={{opacity: 1, x: 0}}
+                className='w-[50rem] h-[30rem] bg-[#1F2937] mt-14 rounded-3xl overflow-hidden px-6 py-4'>
                     <div className='flex flex-row gap-5 mb-5 items-center justify-center'>
                         <button className='bg-blue-600 hover:bg-gray-600 text-gray-300 hover:text-white font-medium px-4 py-2 rounded-lg flex items-center transition-colors text-sm sm:text-base cursor-pointer'>
 
@@ -59,7 +71,7 @@ function MainPage() {
                     </div>
 
 
-                </div>
+                </motion.div>
             </motion.div>
             <Footer />
 
