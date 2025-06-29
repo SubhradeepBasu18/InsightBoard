@@ -151,16 +151,18 @@ export default function Header({ startShow, isLoggedIn }) {
 
                                 </motion.button>
                             ) : (
-                                <motion.button
-                                    whileHover={{
-                                        scale: 1.05,
-                                        boxShadow: "0 8px 25px rgba(59, 130, 246, 0.3)",
-                                    }}
-                                    whileTap={{ scale: 0.95 }}
-                                    className="hidden sm:flex items-center justify-center h-10 px-6 rounded-xl bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-500 hover:via-blue-600 hover:to-blue-700 text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-500/20 hover:border-blue-400/30">
-                                    Login
+                                <Link to="/login">
+                                    <motion.button
+                                        whileHover={{
+                                            scale: 1.05,
+                                            boxShadow: "0 8px 25px rgba(59, 130, 246, 0.3)",
+                                        }}
+                                        whileTap={{ scale: 0.95 }}
+                                        className="hidden sm:flex items-center justify-center h-10 px-6 rounded-xl bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-500 hover:via-blue-600 hover:to-blue-700 text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all duration-300 border border-blue-500/20 hover:border-blue-400/30 cursor-pointer">
+                                        Login
 
-                                </motion.button>
+                                    </motion.button>
+                                </Link>
                             )
                         }
 

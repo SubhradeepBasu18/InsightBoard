@@ -7,6 +7,8 @@ import Hero from './components/Hero'
 import Testimonials from './components/Testimonials'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MainPage from './pages/MainPage'
+import LoginPage from './pages/LoginPage'
+import SignupPage from './pages/SignupPage'
 
 function App() {
     return (
@@ -18,7 +20,7 @@ function App() {
                             {/* Header section */}
                             <Header
                             startShow={true}
-                            isLoggedIn={true}
+                            isLoggedIn={false}
                             />
                             <main className="flex-1 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-40 py-6 sm:py-8 md:py-10 flex justify-center">
                                 <div className="w-full max-w-[1400px] flex flex-1 flex-col">
@@ -34,7 +36,9 @@ function App() {
                         </div>
                     </div>
                 } />
-                <Route path="/main" element={<MainPage />} />
+                <Route path="/main" element={<MainPage isLoggedIn={false}/>} />
+                <Route path="/login" element={<LoginPage/>}/>
+                <Route path='/signup' element={<SignupPage/>}></Route>
             </Routes>
         </BrowserRouter>
     )

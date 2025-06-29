@@ -6,11 +6,12 @@ import { MdOutlineFileUpload } from "react-icons/md";
 import { MdOutlineAutoAwesome } from "react-icons/md";
 import { motion } from "motion/react"
 
-function MainPage() {
+function MainPage({isLoggedIn}) {
     return (
         <div className='w-full min-h-screen bg-zinc-950 flex flex-col'>
             <Header
                 startShow={false}
+                isLoggedIn={isLoggedIn}
             />
 
             <motion.div initial={{ opacity: 0, x: -30 }}
