@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import MainPage from './pages/MainPage'
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
+import Dashboard from './pages/Dashboard'
 
 function App() {
     return (
@@ -39,6 +40,7 @@ function App() {
                 <Route path="/main" element={<MainPage isLoggedIn={false}/>} />
                 <Route path="/login" element={<LoginPage/>}/>
                 <Route path='/signup' element={<SignupPage/>}></Route>
+                <Route path='/dashboard' element={<Dashboard/>}></Route>
             </Routes>
         </BrowserRouter>
     )

@@ -1,12 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footers';
 import { GoPaste } from "react-icons/go";
 import { MdOutlineFileUpload } from "react-icons/md";
 import { MdOutlineAutoAwesome } from "react-icons/md";
 import { motion } from "motion/react"
+import sendMeetingText from '../ConfigAPI.js'
 
 function MainPage({isLoggedIn}) {
+    const [inputText, setInputText] = useState('')
+
+    const handleChange = (e) => {
+        setInputText(e.target.value)
+    }
+
+    const handleSubmit = async () => {
+        console.log(inputText);   
+        const response = await sendMeetingText(inputText)
+        console.log(response);
+        setInputText('')     
+    }
+
     return (
         <div className='w-full min-h-screen bg-zinc-950 flex flex-col'>
             <Header
@@ -52,9 +66,11 @@ function MainPage({isLoggedIn}) {
                         type="text"
                         name="inputText"
                         id="inputText"
+                        value={inputText}
                         placeholder="Enter your text here..."
                         className='w-full h-[15rem] px-4 py-4 bg-gray-900 border border-gray-600 rounded-lg text-gray-200 placeholder-gray-500
                                 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-shadow'
+                        onChange={handleChange}
                     />
 
                     <div className='flex flex-row mt-2 items-center justify-between'>
@@ -62,7 +78,9 @@ function MainPage({isLoggedIn}) {
 
                         <motion.button whileHover={{ scale: 1.1 }}
                             whileTap={{ scale: 0.95 }}
-                            onHoverStart={() => console.log('hover started!')} className='bg-linear-to-r/oklch from-indigo-500 to-teal-400 px-3 py-2 m-2 rounded-xl flex flex-row'>
+                            onHoverStart={() => console.log('hover started!')}
+                            onClick={handleSubmit}
+                            className='bg-linear-to-r/oklch from-indigo-500 to-teal-400 px-3 py-2 m-2 rounded-xl flex flex-row'>
                             <span className='mr-2'>
                                 <MdOutlineAutoAwesome />
                             </span>

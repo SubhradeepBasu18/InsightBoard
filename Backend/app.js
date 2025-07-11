@@ -7,9 +7,11 @@ import { onSummaryRequest } from "./inngest/functions/onRequest.js";
 import {serve} from "inngest/express"
 import {inngest} from "./inngest/client.js"
 import cookieParser from "cookie-parser";
+import cors from "cors"
 configDotenv();
 
 const app = express()
+app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
 const port = process.env.PORT || 3001

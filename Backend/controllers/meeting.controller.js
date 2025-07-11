@@ -19,7 +19,7 @@ export const saveMeetings = async (req, res) => {
 
         console.log("Meeting created: ", newMeeting);
 
-        await inngest.send({
+        const summaryId = await inngest.send({
             name: "meeting/summary.requested",
             data: {
                 meetingId: newMeeting._id.toString(),
@@ -27,7 +27,7 @@ export const saveMeetings = async (req, res) => {
             }
         })
         
-        return res.status(200).json({message: "Meeting Transcript saved in DB"});
+        return res.status(200).json({message: "Meeting Transcript saved in DB", summaryId});
 
     } catch (error) {
         console.error("Error creating Meeting:", error);
