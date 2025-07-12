@@ -8,7 +8,7 @@ import Testimonials from './components/Testimonials'
 
 function App() {
     return (
-        // bg-[#111418]
+        // Previous bg color : bg-[#111418]
         <div className="min-h-screen flex flex-col bg-zinc-950 font-['Inter','Noto Sans',sans-serif]">
             <div className="flex flex-col grow h-full w-full">
                 {/* Header section */}
