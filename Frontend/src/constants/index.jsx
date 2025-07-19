@@ -80,6 +80,55 @@ export const testimonials = [
   },
 ]
 
+
+export const summaries = [
+  { 
+    title: "Project Alpha Kickoff", 
+    date: "July 20, 2024", 
+    participants: 8, 
+    duration: "1h 30m", 
+    priority: "high",
+    status: "completed",
+    tags: ["project", "kickoff", "planning"]
+  },
+  { 
+    title: "Marketing Strategy Review", 
+    date: "July 18, 2024", 
+    participants: 6, 
+    duration: "45m", 
+    priority: "medium",
+    status: "completed",
+    tags: ["marketing", "strategy", "review"]
+  },
+  { 
+    title: "Product Roadmap", 
+    date: "July 15, 2024", 
+    participants: 12, 
+    duration: "2h", 
+    priority: "high",
+    status: "completed",
+    tags: ["product", "roadmap", "planning"]
+  },
+  { 
+    title: "Sales Team Meeting", 
+    date: "July 12, 2024", 
+    participants: 10, 
+    duration: "1h", 
+    priority: "medium",
+    status: "completed",
+    tags: ["sales", "team", "review"]
+  },
+  { 
+    title: "Design Review Session", 
+    date: "July 10, 2024", 
+    participants: 5, 
+    duration: "1h 15m", 
+    priority: "low",
+    status: "completed",
+    tags: ["design", "review", "feedback"]
+  },
+];
+
 // Previous Mock data 
 // const testimonials = [
 //     {
