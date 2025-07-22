@@ -10,38 +10,27 @@ import MainPage from './pages/MainPage'
 import LoginPage from './pages/LoginPage'
 import SignupPage from './pages/SignupPage'
 import Dashboard from './pages/Dashboard'
+import Home from './pages/Home'
+import Pricing from './pages/Pricing'
 
 function App() {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path="/" element={
-                    <div className="min-h-screen flex flex-col bg-zinc-950 font-['Inter','Noto Sans',sans-serif]">
-                        <div className="flex flex-col grow h-full w-full">
-                            {/* Header section */}
-                            <Header
-                            startShow={true}
-                            isLoggedIn={false}
-                            />
-                            <main className="flex-1 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-40 py-6 sm:py-8 md:py-10 flex justify-center">
-                                <div className="w-full max-w-[1400px] flex flex-1 flex-col">
-                                    {/* Hero features */}
-                                    <Hero />
-                                    <Features />
-                                    <Testimonials />
-                                    <CTA />
-                                </div>
-                            </main>
-                            {/* Footer */}
-                            <Footer />
-                        </div>
-                    </div>
-                } />
-                <Route path="/main" element={<MainPage isLoggedIn={false}/>} />
-                <Route path="/login" element={<LoginPage/>}/>
-                <Route path='/signup' element={<SignupPage/>}></Route>
-                <Route path='/dashboard' element={<Dashboard/>}></Route>
-            </Routes>
+            <div className="min-h-screen flex flex-col bg-zinc-950 font-['Inter','Noto Sans',sans-serif]">
+                <Header startShow={true} isLoggedIn={false} />
+                <div className="flex flex-col grow h-full w-full pt-10"> 
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/main" element={<MainPage />} />
+                        {/* Not required as Clerk is integrated */}
+                        {/* <Route path="/login" element={<LoginPage />} />
+                        <Route path="/signup" element={<SignupPage />} /> */}
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/pricing" element={<Pricing />} />
+                    </Routes>
+                </div>
+                <Footer />
+            </div>
         </BrowserRouter>
     )
 }
