@@ -7,6 +7,22 @@ import {
   ClockIcon,
 } from "@heroicons/react/24/outline"
 
+
+export const NAV_ITEMS = [
+  {
+    label: "Home",
+    path: "/",
+  },
+  {
+    label: "Dashboard",
+    path: "/dashboard",
+  },
+  {
+    label: "Pricing",
+    path: "/pricing",
+  },
+];
+
 export const features = [
   {
     title: "Automated Summaries",
@@ -80,27 +96,130 @@ export const testimonials = [
   },
 ]
 
-// Previous Mock data 
-// const testimonials = [
-//     {
-//         name: "Sophia Patel, Project Manager",
-//         quote:
-//             "InsightBoard has revolutionized our team's workflow. We now spend less time on meeting recaps and more on strategic initiatives.",
-//         image:
-//             "https://lh3.googleusercontent.com/aida-public/AB6AXuBIJ1ZIoLL5qiDLOGX9zYFeUDS4VExL_Gzt-0b2oJdcGj9vmG_WpnnZCklYyWHlNiyO3BVdrT1ueqF0fGX50nGtrzKaPqmCWTLaUipK4f-yxo-eHGU775_BAoP2HpARaO0RHRW1YyLZrmpG58mfH7n__j_hq1Z9FDbu453Imw8O9ll89YF8_Sqo7xhUN11nbJ3_1Zg-MH_1uavywj_gQX1XlaJkSrGsLsCIeTJZII2cfpEDcjAjJKa0QGCt3v2hUNrWLtasJu1935o",
-//     },
-//     {
-//         name: "Ethan Chen, Team Lead",
-//         quote:
-//             "The automated summaries are incredibly accurate and save us hours each week. It's a game-changer for our productivity.",
-//         image:
-//             "https://lh3.googleusercontent.com/aida-public/AB6AXuAOwfay6xyyYVZM1jWMwfcNj7AnkFwwb4FA1tq0Xg9Yi_rMRYHDdgkd96LKeLgkg6ZLpvZe0ISXyWerfKFjcYIVTjPhhCHnIEho06UjftqwvPHbWuaLodVVxDKCrkqf9EwBYUAfHg4vTVoqZOfSR4ZpTJZndDYh9Mv_ScLg6Pig4dAQ-0gzcNWiYN725VsK3U_489EJIFSKj2qVAsN4WHfWAgfUurBiE197spNa7rw4YH38YDxrpA_OfMcuYVCxmC_VZ1j11vRDB0U",
-//     },
-//     {
-//         name: "Olivia Wong, Marketing Director",
-//         quote:
-//             "Sharing meeting insights has never been easier. InsightBoard keeps everyone on the same page and ensures no detail is missed.",
-//         image:
-//             "https://lh3.googleusercontent.com/aida-public/AB6AXuBwbDk6XXaGLXh5wAs_IUjZP_n1GHVlq40pn6eI_ErJ8axeglq8dd5Fl_jqyxFraJFys25NVWzxmckIP7uKWNfxmTg0Un8f5K2A6n5GRf05hOfNKLm1MCjAz_aSu3ELOpkjGzuNaA1AXkVIIcsAJAumpv7quYtFeX-ll30xR36hD5Z4H6xwXFIJnwW8qp0bCXNPZLx3VzGKPIbb9S68VFD-N909uMet6HzGClINpCDQmd3wS7tZykd-NLwHLQF1-1qp68IxEwQMcrA",
-//     },
-// ];
+
+export const summaries = [
+  { 
+    title: "Project Alpha Kickoff", 
+    date: "July 20, 2024", 
+    participants: 8, 
+    duration: "1h 30m", 
+    priority: "high",
+    status: "completed",
+    tags: ["project", "kickoff", "planning"],
+    summaryContent: "The Project Alpha kickoff meeting was held to align the team on the project goals, timelines, and responsibilities. Key discussions included the project scope, deliverables, and milestones.",
+    decisions: [
+      "Weekly meetings will be held on Mondays at 10 AM.",
+      "Project plan and timelines were approved."
+    ],
+    actionItems: [
+      "Sarah will finalize the project plan document.",
+      "David will set up the project tracking tool."
+    ],
+    keyPoints: [
+      "Project Alpha aims to increase user engagement by 20%.",
+      "The team will use Agile methodology for project management."
+    ]
+  },
+  { 
+    title: "Marketing Strategy Review", 
+    date: "July 18, 2024", 
+    participants: 6, 
+    duration: "45m", 
+    priority: "medium",
+    status: "completed",
+    tags: ["marketing", "strategy", "review"],
+    summaryContent: "Reviewed the Q3 marketing strategy with focus on digital channels. Discussed budget allocation and performance metrics.",
+    decisions: [
+      "Approved the increased budget for social media ads.",
+      "Agreed to focus on influencer marketing for the new product launch."
+    ],
+    actionItems: [
+      "Marketing team to create detailed campaign plans by Friday.",
+      "Alex to contact potential influencers for partnerships."
+    ],
+    keyPoints: [
+      "Social media engagement has increased by 15% since last quarter.",
+      "Email marketing will be optimized for mobile users."
+    ]
+  },
+  { 
+    title: "Product Roadmap", 
+    date: "July 15, 2024", 
+    participants: 12, 
+    duration: "2h", 
+    priority: "high",
+    status: "completed",
+    tags: ["product", "roadmap", "planning"],
+    summaryContent: "Presented and discussed the 12-month product roadmap with all stakeholders. Prioritized features based on customer feedback.",
+    decisions: [
+      "Postponed the dark mode feature to Q2 next year.",
+      "Approved the development of the new analytics dashboard."
+    ],
+    actionItems: [
+      "Engineering team to provide timeline estimates for Q1 features.",
+      "Product team to gather more customer feedback on proposed features."
+    ],
+    keyPoints: [
+      "Customer retention is the primary focus for next quarter.",
+      "New onboarding flow will be prioritized in Q4."
+    ]
+  },
+  { 
+    title: "Sales Team Meeting", 
+    date: "July 12, 2024", 
+    participants: 10, 
+    duration: "1h", 
+    priority: "medium",
+    status: "completed",
+    tags: ["sales", "team", "review"],
+    summaryContent: "Weekly sales team meeting to review targets and discuss challenges. Focused on improving conversion rates.",
+    decisions: [
+      "Implemented new follow-up procedure for warm leads.",
+      "Approved the new commission structure for Q3."
+    ],
+    actionItems: [
+      "All sales reps to complete new CRM training by end of week.",
+      "Team leads to identify top 3 conversion blockers."
+    ],
+    keyPoints: [
+      "Enterprise sales are up 22% this quarter.",
+      "New pricing packages are resonating well with SMB clients."
+    ]
+  },
+  { 
+    title: "Design Review Session", 
+    date: "July 10, 2024", 
+    participants: 5, 
+    duration: "1h 15m", 
+    priority: "low",
+    status: "completed",
+    tags: ["design", "review", "feedback"],
+    summaryContent: "Reviewed the new dashboard designs and collected feedback from the engineering team for feasibility assessment.",
+    decisions: [
+      "Approved the new navigation structure.",
+      "Agreed to simplify the data visualization components."
+    ],
+    actionItems: [
+      "Design team to incorporate feedback and deliver final mockups.",
+      "UI team to create component library for the new design system."
+    ],
+    keyPoints: [
+      "New design system will improve development speed by 30%.",
+      "Accessibility improvements are now part of all design requirements."
+    ]
+  }
+];
+export const faqs = [
+            {
+              question: "Can I change plans later?",
+              answer: "Yes, you can upgrade or downgrade at any time."
+            },
+            {
+              question: "Is there a free trial?",
+              answer: "All paid plans come with a 14-day free trial."
+            },
+            {
+              question: "What payment methods do you accept?",
+              answer: "We accept all major credit cards and PayPal."
+            }
+]

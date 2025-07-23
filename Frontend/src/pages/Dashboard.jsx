@@ -1,109 +1,107 @@
-import React from "react";
-import Header from '../components/Header'
-import { Card, CardHeader, CardContent } from "../components/ui/card";
-import { Separator } from "../components/ui/separator";
-import { ScrollArea } from "../components/ui/scroll-area";
-import { motion } from "framer-motion"
-
-const summaries = [
-  { title: "Project Alpha Kickoff", date: "July 20, 2024" },
-  { title: "Marketing Strategy Review", date: "July 18, 2024" },
-  { title: "Product Roadmap", date: "July 15, 2024" },
-  { title: "Sales Team Meeting", date: "July 12, 2024" },
-  { title: "Design Review Session", date: "July 10, 2024" },
-];
+import React, { useState, useEffect } from "react";
+import { AnimatePresence } from "framer-motion";
+import { SearchAndFilter } from "@/components/SearchAndFilter";
+import { SummaryList } from "@/components/SummaryList";
+import { SummaryDetail } from "@/components/SummaryDetail";
+import { summaries } from "@/constants";
 
 export default function Dashboard() {
-    return (
-      <div className="flex flex-col h-screen bg-[#0B0B0F] text-white">
-        <Header />
-  
-        <div className="flex flex-1 overflow-hidden mt-20">
-          {/* Sidebar */}
-          <aside className="w-80 bg-[#12121A] border-r border-[#1E1E2D] p-4">
-            <motion.h2
-              className="text-lg font-semibold mb-4 text-white"
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-            >
-              All Summaries
-            </motion.h2>
-            <ScrollArea className="h-full pr-2 space-y-2">
-              {summaries.map((summary, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
-                >
-                  <Card className="bg-[#1A1A28] hover:bg-[#232334] border border-[#2C2C3C] transition-colors">
-                    <CardContent className="p-4">
-                      <p className="font-medium truncate text-white">{summary.title}</p>
-                      <p className="text-sm text-gray-400">{summary.date}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </ScrollArea>
-          </aside>
-  
-          {/* Main Content */}
-          <main className="flex-1 p-10 overflow-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Card className="bg-[#12121A] border border-[#2C2C3C]">
-                <CardHeader>
-                  <h1 className="text-2xl font-bold text-white">Project Alpha Kickoff</h1>
-                  <p className="text-sm text-gray-400">July 20, 2024</p>
-                </CardHeader>
-                <Separator className="bg-[#2A2A3C]" />
-                <CardContent className="space-y-6 text-gray-300 mt-4">
-                  <div>
-                    <h2 className="text-xl font-semibold mb-2 text-white">Summary</h2>
-                    <p>
-                      The Project Alpha kickoff meeting was held to align the team on the project goals,
-                      timelines, and responsibilities. Key discussions included the project scope,
-                      deliverables, and milestones. The team agreed on a weekly meeting schedule to track
-                      progress and address any roadblocks. Action items were assigned to team members, and
-                      the project plan was finalized.
-                    </p>
-                  </div>
-  
-                  <div>
-                    <h2 className="text-xl font-semibold mb-2 text-white">Decisions</h2>
-                    <ul className="list-disc list-inside space-y-1">
-                      <li>Weekly meetings will be held on Mondays at 10 AM.</li>
-                      <li>Project plan and timelines were approved.</li>
-                    </ul>
-                  </div>
-  
-                  <div>
-                    <h2 className="text-xl font-semibold mb-2 text-white">Action Items</h2>
-                    <ul className="list-disc list-inside space-y-1">
-                      <li>Sarah will finalize the project plan document.</li>
-                      <li>David will set up the project tracking tool.</li>
-                      <li>Emily will schedule the next team meeting.</li>
-                    </ul>
-                  </div>
-  
-                  <div>
-                    <h2 className="text-xl font-semibold mb-2 text-white">Key Points</h2>
-                    <ul className="list-disc list-inside space-y-1">
-                      <li>Project Alpha aims to increase user engagement by 20%.</li>
-                      <li>The project is expected to be completed within three months.</li>
-                      <li>The team will use Agile methodology for project management.</li>
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </main>
+  const [selectedSummary, setSelectedSummary] = useState(summaries[0]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("all");
+  const [isMobile, setIsMobile] = useState(false);
+  const [mobileView, setMobileView] = useState("list");
+
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkIfMobile();
+    window.addEventListener('resize', checkIfMobile);
+    return () => window.removeEventListener('resize', checkIfMobile);
+  }, []);
+
+  return (
+    <div className="flex flex-col h-[calc(100vh-80px)] bg-gradient-to-br from-[#0B0B0F] via-[#0F0F16] to-[#12121A] text-white">
+      {/* Mobile Toggle Buttons */}
+      {isMobile && (
+        <div className="flex border-b border-[#1E1E2D]/50">
+          <button
+            className={`flex-1 py-3 ${mobileView === 'list' ? 'bg-[#12121A] text-blue-400' : 'bg-[#0B0B0F]'}`}
+            onClick={() => setMobileView('list')}
+          >
+            Summaries
+          </button>
+          <button
+            className={`flex-1 py-3 ${mobileView === 'detail' ? 'bg-[#12121A] text-blue-400' : 'bg-[#0B0B0F]'}`}
+            onClick={() => setMobileView('detail')}
+          >
+            Details
+          </button>
         </div>
+      )}
+
+      <div className="flex flex-1 overflow-hidden">
+        {/* Sidebar - Always visible on desktop, conditionally on mobile */}
+        <aside className={`${isMobile && mobileView === 'detail' ? 'hidden' : 'flex'} w-full md:w-96 flex-col border-r border-[#1E1E2D]/50`}>
+          <div className="p-4 md:p-6 bg-[#12121A]/50 backdrop-blur-xl sticky top-0 z-10">
+            <SearchAndFilter 
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              selectedFilter={selectedFilter}
+              setSelectedFilter={setSelectedFilter}
+            />
+          </div>
+          
+          <div className="flex-1 overflow-y-auto bg-[#12121A]/50 p-4 md:p-6">
+            <SummaryList 
+              summaries={summaries}
+              selectedSummary={selectedSummary}
+              setSelectedSummary={(summary) => {
+                setSelectedSummary(summary);
+                if (isMobile) setMobileView('detail');
+              }}
+              searchTerm={searchTerm}
+              selectedFilter={selectedFilter}
+            />
+          </div>
+        </aside>
+
+        {/* Main Content - Always visible on desktop, conditionally on mobile */}
+        <main className={`${isMobile && mobileView === 'list' ? 'hidden' : 'flex'} flex-1 overflow-auto relative`}>
+          <div className="w-full p-4 md:p-8">
+            <AnimatePresence mode="wait">
+              <SummaryDetail selectedSummary={selectedSummary} />
+            </AnimatePresence>
+          </div>
+          
+          {/* Back Button for Mobile */}
+          {isMobile && (
+            <button 
+              className="fixed bottom-6 left-6 bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full shadow-lg transition-all z-50"
+              onClick={() => setMobileView('list')}
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                className="h-6 w-6" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18" 
+                />
+              </svg>
+              <span className="sr-only">Back to list</span>
+            </button>
+          )}
+        </main>
       </div>
-    );
-  }
-  
+    </div>
+  );
+}
